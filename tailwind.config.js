@@ -1,5 +1,3 @@
-import defaultTheme from 'tailwindcss/defaultTheme';
-
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
@@ -12,9 +10,21 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Figtree', ...require('tailwindcss/defaultTheme').fontFamily.sans],
+            },
+            colors: {
+                light: {
+                    bg: '#f9fafb',
+                    text: '#1f2937',
+                },
+                dark: {
+                    bg: '#1f2937',
+                    text: '#e5e7eb',
+                    highlight: '#ffffff',
+                },
             },
         },
     },
+    darkMode: 'class',
     plugins: [],
 };
