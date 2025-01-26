@@ -17,24 +17,17 @@ class LoginUser extends Component
     public function login()
     {
         $this->validate();
-    
-        $user = \App\Models\User::where('email', $this->email)->first();
-        dd([
-            'attempt' => Auth::attempt(['email' => $this->email, 'password' => $this->password]),
-            'user' => $user,
-            'password_check' => $user ? \Illuminate\Support\Facades\Hash::check($this->password, $user->password) : null,
-        ]);
-    
+
         if (Auth::attempt(['email' => $this->email, 'password' => $this->password], true)) {
-            session()->flash('success', 'Login successful!');
+            session()->flash('success', 'Login realizado com sucesso!');
             return redirect()->route('dashboard');
         }
-    
-        session()->flash('error', 'Invalid credentials.');
-    }      
+
+        session()->flash('error', 'Credenciais inválidas.');
+    }
 
     public function render()
     {
         return view('livewire.login-user')->layout('layouts.app');
-    }  
+    }
 }
