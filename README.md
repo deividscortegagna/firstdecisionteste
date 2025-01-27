@@ -1,7 +1,7 @@
 
 # Projeto para Teste - First Decision Laravel com Livewire
 
-Este repositório contém uma aplicação desenvolvida em **Laravel** com **Livewire** para gerenciamento de usuários. A aplicação inclui operações de **CRUD** (Create, Read, Update, Delete) e foi criada utilizando boas práticas de desenvolvimento e testes. O projeto segue princípios como **SOLID**, **Clean Code** e **Calistenia de Objetos**, aplicando conceitos e patterns conhecidos. A arquitetura utiliza **Services** e **Repositories** para abstrair a lógica de negócios e a camada de acesso a dados. Além d...
+Este repositório contém uma aplicação desenvolvida em **Laravel** com **Livewire** para gerenciamento de usuários. A aplicação inclui operações de **CRUD** (Create, Read, Update, Delete) e foi criada utilizando boas práticas de desenvolvimento e testes. O projeto segue princípios como **SOLID**, **Clean Code** e **Calistenia de Objetos**, aplicando conceitos e patterns conhecidos. A arquitetura utiliza **Services** e **Repositories** para abstrair a lógica de negócios e a camada de acesso a dados. Além disso, conta com **Livewire Components**, validações em tempo real, testes unitários e de feature.
 
 ### Regra Demonstrativa
 
@@ -56,6 +56,11 @@ Foi implementada uma regra para demonstrar como o sistema valida alterações de
    ```bash
    docker run --rm        -u "$(id -u):$(id -g)"        -v "$(pwd):/var/www/html"        -w /var/www/html        laravelsail/php83-composer:latest        composer install --ignore-platform-reqs
    ```
+
+   > **Nota:** Se ocorrer erro ao executar o comando acima, rode o seguinte comando para baixar a imagem necessária:
+   > ```bash
+   > docker pull laravelsail/php83-composer:latest
+   > ```
 
    Se não for a primeira vez, basta executar:
    ```bash
