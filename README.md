@@ -1,66 +1,145 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Projeto para teste - First Decision Laravel com Livewire
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este repositório contém uma aplicação desenvolvida em Laravel com Livewire para gerenciamento de usuários. A aplicação inclui operações de CRUD (Create, Read, Update, Delete) e foi criada utilizando boas práticas de desenvolvimento e testes.
 
-## About Laravel
+Este projeto segue as melhores práticas de design e arquitetura de software, aplicando SOLID, clean code, calistenia de objetos, entre outros conceitos e patterns conhecidos.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+O projeto utiliza um padrão de design com Services e Repositories para abstrair a lógica de negócios e a camada de acesso a dados. Além disso, conta com Livewire Components, validações em tempo real, testes unitários e de feature.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Adicionei uma regra, para fins de demonstração de onde a regra é implementada em cada Service. A regra demonstra o seguinte: Ao editar um usuário e optar por alterar a senha dele, deve-se informar a senha atual e a nova senha (em casos reais, essa regra seria válida caso o usuário estivesse alterando sua própria senha de autenticação). O back-end verifica se a senha atual digitada realmente é a senha cadastrada no banco de dados.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Tecnologias Utilizadas
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Laravel: Framework PHP para construção de aplicações web.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Livewire: Biblioteca para criar interfaces dinâmicas sem recarregar a página.
 
-## Laravel Sponsors
+PHP: Linguagem de programação utilizada, versão 8.1.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Docker: Ferramenta de contêinerização.
 
-### Premium Partners
+PostgreSQL: Banco de dados utilizado.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Pré-requisitos
 
-## Contributing
+Docker
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Docker Compose
 
-## Code of Conduct
+Estrutura do Projeto
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+O projeto inclui:
 
-## Security Vulnerabilities
+Services: Contém a lógica de negócios e as regras da aplicação.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Repositories: Fornece uma camada de abstração sobre o acesso a dados, permitindo uma maneira mais flexível de interagir com o banco de dados.
 
-## License
+Livewire Components: Gerenciam a interação com o front-end em tempo real.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Config: Diretório para arquivos de configuração da aplicação.
+
+Configuração e Instalação
+
+A seguir, o passo a passo para rodar o sistema em ambiente local.
+
+Instalação
+
+Clone o repositório:
+
+git clone git@github.com:deividscortegagna/firstdecisionteste.git
+cd firstdecisionteste
+
+Para emular o ambiente de desenvolvimento, foi utilizado o Docker e Docker Compose.
+
+Rodar dentro da raiz do repositório:
+
+docker-compose up --build -d
+
+Caso seja necessário instalar as dependências novamente:
+
+docker exec -it laravel-app sh
+
+composer install
+
+Após isso, o sistema se torna acessível via:
+
+Se utilizando Docker com porta 8080: http://localhost:8080
+
+Se utilizando Laravel localmente: http://localhost/login
+
+Certifique-se de que a configuração do docker-compose.yml ou do servidor Laravel está corretamente configurada.
+
+Documentação da API
+
+Endpoints Principais
+
+POST /api/users: Cria um novo usuário.
+
+Exemplo em curl:
+
+curl -X POST http://localhost:8080/api/users \
+-H "Content-Type: application/json" \
+-d '{
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "password": "password",
+    "password_confirmation": "password"
+}'
+
+PUT /api/users/{id}: Atualiza os dados de um usuário.
+
+Exemplo em curl:
+
+curl -X PUT http://localhost:8080/api/users/1 \
+-H "Content-Type: application/json" \
+-d '{
+    "name": "Jane Doe",
+    "email": "jane.doe@example.com",
+    "password": "newpassword",
+    "password_confirmation": "newpassword"
+}'
+
+GET /api/user: Retorna os dados do usuário autenticado (via Sanctum).
+
+Exemplo em curl:
+
+curl -X GET http://localhost:8080/api/user \
+-H "Authorization: Bearer <TOKEN>"
+
+Rotas Web
+
+GET /register: Tela de registro de novos usuários.
+
+GET /login: Tela de login.
+
+GET /dashboard: Painel principal após login.
+
+Rodando os Testes
+
+Para rodar os testes criados, basta executar:
+
+docker exec -it laravel-app sh
+
+php artisan test
+
+
+
+Front-end
+
+Por se tratar de uma API REST, o front-end foi desenvolvido utilizando Livewire e Blade Templates diretamente no Laravel, garantindo maior integração e dinamismo na interface. Rotas como /register, /login e /dashboard utilizam componentes Livewire para interação em tempo real.
+
+TODO
+
+Deixo anotado aqui, com um TODO para ser feito ainda dentro deste projeto:
+
+Implementar autenticação via OAuth com Laravel Passport.
+
+Adicionar Swagger para documentação da API.
+
+Melhorar a customização visual dos componentes Livewire para maior usabilidade.
+
+Autor
+
+Deivid Willian Scortegagna
