@@ -17,3 +17,7 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
 
     Route::get('/', UserList::class)->name('dashboard');
 });
+
+Route::get('/', function () {
+    return response()->json(['message' => 'Welcome to the application!'], 200);
+});
