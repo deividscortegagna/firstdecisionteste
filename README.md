@@ -125,6 +125,8 @@ docker exec -it laravel-app sh
 php artisan test
 ```
 
+![Executando os Testes](public/images/test.JPG)
+
 ---
 
 ## Front-end
