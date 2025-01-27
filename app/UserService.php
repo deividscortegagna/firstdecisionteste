@@ -15,9 +15,13 @@ class UserService
 
     public function createUser(array $data)
     {
-        $data['password'] = bcrypt($data['password']);
-        return $this->userRepository->create($data);
-    }
+        try {
+            $data['password'] = bcrypt($data['password']);
+            return $this->userRepository->create($data);
+        } catch (\Exception $e) {
+            throw new \Exception('Failed to create user');
+        }
+    }    
 
     public function updateUser(int $id, array $data)
     {
