@@ -1,7 +1,7 @@
 
 # Projeto para Teste - First Decision Laravel com Livewire
 
-Este repositório contém uma aplicação desenvolvida em **Laravel** com **Livewire** para gerenciamento de usuários. A aplicação inclui operações de **CRUD** (Create, Read, Update, Delete) e foi criada utilizando boas práticas de desenvolvimento e testes. O projeto segue princípios como **SOLID**, **Clean Code** e **Calistenia de Objetos**, aplicando conceitos e patterns conhecidos. A arquitetura utiliza **Services** e **Repositories** para abstrair a lógica de negócios e a camada de acesso a dados. Além disso, a aplicação conta com **Livewire Components**, validações em tempo real, testes unitários e de feature.
+Este repositório contém uma aplicação desenvolvida em **Laravel** com **Livewire** para gerenciamento de usuários. A aplicação inclui operações de **CRUD** (Create, Read, Update, Delete) e foi criada utilizando boas práticas de desenvolvimento e testes. O projeto segue princípios como **SOLID**, **Clean Code** e **Calistenia de Objetos**, aplicando conceitos e patterns conhecidos. A arquitetura utiliza **Services** e **Repositories** para abstrair a lógica de negócios e a camada de acesso a dados. Além d...
 
 ### Regra Demonstrativa
 
@@ -54,12 +54,7 @@ Foi implementada uma regra para demonstrar como o sistema valida alterações de
 
 3. Caso seja a primeira vez que esteja executando o projeto:
    ```bash
-   docker run --rm \
-       -u "$(id -u):$(id -g)" \
-       -v "$(pwd):/var/www/html" \
-       -w /var/www/html \
-       laravelsail/php83-composer:latest \
-       composer install --ignore-platform-reqs
+   docker run --rm        -u "$(id -u):$(id -g)"        -v "$(pwd):/var/www/html"        -w /var/www/html        laravelsail/php83-composer:latest        composer install --ignore-platform-reqs
    ```
 
    Se não for a primeira vez, basta executar:
@@ -78,7 +73,7 @@ Foi implementada uma regra para demonstrar como o sistema valida alterações de
    ```
 
 5. Acesse a aplicação: 
-   - **Docker com porta 8080**: [http://localhost:8080](http://localhost:8080)
+   - **Docker**: [http://localhost](http://localhost)
    - **Laravel localmente**: [http://localhost/login](http://localhost/login)
 
 Certifique-se de que o arquivo `docker-compose.yml` ou o servidor Laravel estão configurados corretamente.
@@ -95,7 +90,7 @@ Cria um novo usuário.
 
 **Exemplo em `curl`:**
 ```bash
-curl -X POST http://localhost:8080/api/users -H "Content-Type: application/json" -d '{
+curl -X POST http://localhost/api/users -H "Content-Type: application/json" -d '{
     "name": "John Doe",
     "email": "john.doe@example.com",
     "password": "password",
@@ -109,7 +104,7 @@ Atualiza os dados de um usuário.
 
 **Exemplo em `curl`:**
 ```bash
-curl -X PUT http://localhost:8080/api/users/1 -H "Content-Type: application/json" -d '{
+curl -X PUT http://localhost/api/users/1 -H "Content-Type: application/json" -d '{
     "name": "Jane Doe",
     "email": "jane.doe@example.com",
     "password": "newpassword",
@@ -123,7 +118,7 @@ Retorna os dados do usuário autenticado (via Sanctum).
 
 **Exemplo em `curl`:**
 ```bash
-curl -X GET http://localhost:8080/api/user -H "Authorization: Bearer <TOKEN>"
+curl -X GET http://localhost/api/user -H "Authorization: Bearer <TOKEN>"
 ```
 
 ---
