@@ -1,7 +1,7 @@
 
 # Projeto para Teste - First Decision Laravel com Livewire
 
-Este repositório contém uma aplicação desenvolvida em **Laravel** com **Livewire** para gerenciamento de usuários. A aplicação inclui operações de **CRUD** (Create, Read, Update, Delete) e foi criada utilizando boas práticas de desenvolvimento e testes. O projeto segue princípios como **SOLID**, **Clean Code** e **Calistenia de Objetos**, aplicando conceitos e patterns conhecidos. A arquitetura utiliza **Services** e **Repositories** para abstrair a lógica de negócios e a camada de acesso a dados. Além disso, a aplicação conta com **Livewire Components**, validações em tempo real, testes unitários e de feature.
+Este repositório contém uma aplicação desenvolvida em **Laravel** com **Livewire** para gerenciamento de usuários. A aplicação inclui operações de **CRUD** (Create, Read, Update, Delete) e foi criada utilizando boas práticas de desenvolvimento e testes. O projeto segue princípios como **SOLID**, **Clean Code** e **Calistenia de Objetos**, aplicando conceitos e patterns conhecidos. A arquitetura utiliza **Services** e **Repositories** para abstrair a lógica de negócios e a camada de acesso a dados. Além d...
 
 ### Regra Demonstrativa
 
@@ -47,18 +47,32 @@ Foi implementada uma regra para demonstrar como o sistema valida alterações de
    cd firstdecisionteste
    ```
 
-2. Inicie os contêineres com Docker Compose: 
+2. Copie o arquivo `.env.example` para `.env`: 
    ```
-   docker-compose up --build -d
-   ```
-
-3. Caso necessário, instale as dependências manualmente: 
-   ```
-   docker exec -it laravel-app sh
-   composer install
+   cp .env.example .env
    ```
 
-4. Acesse a aplicação: 
+3. Instale as dependências:
+   Caso seja a primeira vez que esteja executando o projeto:
+   ```
+   docker run --rm \
+       -u "$(id -u):$(id -g)" \
+       -v "$(pwd):/var/www/html" \
+       -w /var/www/html \
+       laravelsail/php83-composer:latest \
+       composer install --ignore-platform-reqs
+   ```
+   Se não for, basta executar:
+   ```
+   docker-compose up -d
+   ```
+
+4. Execute as migrações para configurar o banco de dados:
+   ```
+   ./vendor/bin/sail artisan migrate
+   ```
+
+5. Acesse a aplicação: 
    - **Docker com porta 8080**: [http://localhost:8080](http://localhost:8080)
    - **Laravel localmente**: [http://localhost/login](http://localhost/login)
 
@@ -100,7 +114,7 @@ curl -X PUT http://localhost:8080/api/users/1 -H "Content-Type: application/json
 
 #### GET `/api/user`
 
-Retorna os dados do usuário autenticado (via Sanctum).
+Retorna os dados de um usuário autenticado (via Sanctum).
 
 **Exemplo em `curl`:**
 ```
@@ -121,7 +135,9 @@ curl -X GET http://localhost:8080/api/user -H "Authorization: Bearer <TOKEN>"
 
 Para executar os testes, utilize:
 ```
-docker exec -it laravel-app sh
+./vendor/bin/sail up -d
+./vendor/bin/sail composer install
+./vendor/bin/sail artisan migrate
 php artisan test
 ```
 
